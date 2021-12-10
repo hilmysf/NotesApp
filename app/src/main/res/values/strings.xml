@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CustomNotesApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_title">Notes</string>
+    <string name="tv_label">Labels</string>
+    <string name="sv_label_hint">Search your Labels</string>
+    <string name="sv_note_hint">Search your Labels</string>
+</resources>
