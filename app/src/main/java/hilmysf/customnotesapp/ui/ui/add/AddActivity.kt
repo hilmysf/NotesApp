@@ -3,10 +3,6 @@ package hilmysf.customnotesapp.ui.ui.add
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.CountDownTimer
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
@@ -32,6 +28,7 @@ class AddActivity : AppCompatActivity() {
         const val ALERT_DIALOG_CLOSE = 10
         const val ALERT_DIALOG_DELETE = 20
     }
+
     private lateinit var activityAddBinding: ActivityAddBinding
     private lateinit var bottomSheetDialog: BottomSheetDialog
     private var isEdit = false
@@ -46,43 +43,81 @@ class AddActivity : AppCompatActivity() {
         setSupportActionBar(activityAddBinding.myToolbar)
         supportActionBar?.title = null
         supportActionBar?.elevation = 0f
+//        var timestamp = activityAddBinding.tvTimestamp.text
 
-        note = intent.getParcelableExtra<NoteEntity>(EXTRA_NOTE)!!
-        note.date = DateHelper.getCurrentDate()
-//        activityAddBinding.tvTimestamp.text = "Edited ${note?.date}"
+        val intentParcelable = intent.getParcelableExtra<NoteEntity>(EXTRA_NOTE)
+        if (intentParcelable == null) {
+
+        } else {
+            activityAddBinding.edtTitle.setText(intentParcelable.title.toString())
+            activityAddBinding.edtContent.setText(intentParcelable.content.toString())
+            activityAddBinding.tvTimestamp.text = "Edited ${intentParcelable.date}"
+        }
+//        timestamp = DateHelper.getCurrentDate()
+//        note.date = timestamp
+
+
+
         activityAddBinding.ibBackBtn.setOnClickListener {
             val intent = Intent(this@AddActivity, MainActivity::class.java)
             startActivity(intent)
         }
 
         activityAddBinding.ibLabelBtn.setOnClickListener {
-            val title = activityAddBinding.edtTitle.text.toString()
-            val content = activityAddBinding.edtContent.text.toString()
-            if (title.isEmpty()) {
-                activityAddBinding.edtTitle.error = "insert title"
-            } else if (content.isEmpty()) {
-                activityAddBinding.edtContent.error = "insert content"
+            if (intentParcelable == null) {
+                insertNote()
             } else {
-                note.let {
-                    it.title = title
-                    it.content = content
-                    it.date = DateHelper.getCurrentDate()
-                    viewModel.insertNote(it)
-                }
-                Log.d("yoi","${note.title}")
-//                note?.let { note ->
-//                    viewModel.insertNote(note)
-//                }
-                Toast.makeText(this, "Inserted", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@AddActivity, MainActivity::class.java).apply {
-                    putExtra(EXTRA_NOTE, note)
-                    putExtra(EXTRA_POSITION, position)
-                }
-                startActivity(intent)
+                updateNote()
             }
         }
         showBottomSheetDialog()
 //        storeTextData()
+    }
+
+    private fun insertNote(){
+        val title = activityAddBinding.edtTitle.text.toString()
+        val content = activityAddBinding.edtContent.text.toString()
+        if (title.isEmpty()) {
+            activityAddBinding.edtTitle.error = "insert title"
+        } else if (content.isEmpty()) {
+            activityAddBinding.edtContent.error = "insert content"
+        } else {
+            note.let {
+                it.title = title
+                it.content = content
+                it.date = DateHelper.getCurrentDate()
+                viewModel.insertNote(it)
+            }
+            Toast.makeText(this, "Inserted", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@AddActivity, MainActivity::class.java).apply {
+                putExtra(EXTRA_NOTE, note)
+                putExtra(EXTRA_POSITION, position)
+            }
+            startActivity(intent)
+        }
+    }
+
+    private fun updateNote() {
+        val title = activityAddBinding.edtTitle.text.toString()
+        val content = activityAddBinding.edtContent.text.toString()
+        if (title.isEmpty()) {
+            activityAddBinding.edtTitle.error = "insert title"
+        } else if (content.isEmpty()) {
+            activityAddBinding.edtContent.error = "insert content"
+        } else {
+            note.let {
+                it.title = title
+                it.content = content
+                it.date = DateHelper.getCurrentDate()
+                viewModel.updateNote(it)
+            }
+            Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@AddActivity, MainActivity::class.java).apply {
+                putExtra(EXTRA_NOTE, note)
+                putExtra(EXTRA_POSITION, position)
+            }
+            startActivity(intent)
+        }
     }
 
     private fun showBottomSheetDialog() {
@@ -90,9 +125,14 @@ class AddActivity : AppCompatActivity() {
             bottomSheetDialog = BottomSheetDialog(this@AddActivity, R.style.BottomSheetTheme)
             val sheetView = LayoutInflater.from(applicationContext)
                 .inflate(R.layout.bottom_sheet_layout, findViewById(R.id.bottom_sheet))
+
             sheetView.findViewById<View>(R.id.group_delete).setOnClickListener {
                 Toast.makeText(applicationContext, "Note Deleted", Toast.LENGTH_SHORT).show()
                 bottomSheetDialog.dismiss()
+                note.let {
+                    viewModel.deleteNote(it)
+                }
+                startActivity(Intent(this@AddActivity, MainActivity::class.java))
             }
             sheetView.findViewById<View>(R.id.group_copy).setOnClickListener {
                 Toast.makeText(applicationContext, "Note Copied", Toast.LENGTH_SHORT).show()

@@ -4,8 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/hilmy/AndroidStudioProjects/Android/CustomNotesApp/app/src/main/res/drawable/custom_background.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/hilmy/AndroidStudioProjects/Android/CustomNotesApp/app/src/main/res/layout/activity_add.xml" value="0.25" />
         <entry key="..\:/Users/hilmy/AndroidStudioProjects/Android/CustomNotesApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/hilmy/AndroidStudioProjects/Android/CustomNotesApp/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.25" />
         <entry key="..\:/Users/hilmy/AndroidStudioProjects/Android/CustomNotesApp/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/hilmy/AndroidStudioProjects/Android/CustomNotesApp/app/src/main/res/layout/item_note.xml" value="0.264" />
       </map>
     </option>
   </component>

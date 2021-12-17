@@ -32,11 +32,13 @@ class NoteAdapter(private val activity: Activity) :
                 itemTitle.text = note.title
                 itemContent.text = note.content
                 itemView.setOnClickListener {
+
                     val intent = Intent(itemView.context, AddActivity::class.java).apply {
                         putExtra(AddActivity.EXTRA_NOTE, note)
                         putExtra(AddActivity.EXTRA_POSITION, adapterPosition)
                     }
                     activity.startActivityForResult(intent, AddActivity.REQUEST_UPDATE)
+
                 }
             }
         }
