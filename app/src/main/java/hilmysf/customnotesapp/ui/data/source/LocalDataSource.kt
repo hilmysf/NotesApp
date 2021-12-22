@@ -5,18 +5,22 @@ import hilmysf.customnotesapp.ui.data.source.entities.NoteEntity
 import hilmysf.customnotesapp.ui.data.source.room.NoteDao
 import javax.inject.Inject
 
-class LocalDataSource @Inject constructor(private val mNoteDao: NoteDao){
+class LocalDataSource @Inject constructor(private val mNoteDao: NoteDao) {
 
     fun getAllNotes(): DataSource.Factory<Int, NoteEntity> = mNoteDao.getAllNotes()
 
     fun getNoteById(noteId: Int?): NoteEntity? = mNoteDao.getNoteById(noteId)
 
-    fun getLabelledNotes(isLabelled: Boolean): NoteEntity? = mNoteDao.getLabelledNotes(isLabelled)
+    fun getLabeledNotes(isLabelled: Boolean): DataSource.Factory<Int, NoteEntity> = mNoteDao.getLabeledNotes(isLabelled)
 
-    suspend fun insertNote(note: NoteEntity?) = mNoteDao.insertNote(note)
+    fun insertNote(note: NoteEntity?) = mNoteDao.insertNote(note)
 
-    suspend fun updateNote(note: NoteEntity?) = mNoteDao.updateNote(note)
+    fun updateNote(note: NoteEntity?) = mNoteDao.updateNote(note)
 
-    suspend fun deleteNote(note: NoteEntity?) = mNoteDao.deleteNote(note)
+    fun deleteNote(note: NoteEntity?) = mNoteDao.deleteNote(note)
 
+    fun searchDatabase(searchQuery: String): DataSource.Factory<Int, NoteEntity> =
+        mNoteDao.searchDatabase(searchQuery)
+
+//    fun insertLabeledNote(note: NoteEntity?) = mNoteDao.insertLabeledNote(note)
 }

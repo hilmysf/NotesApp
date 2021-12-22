@@ -26,16 +26,6 @@
             android:background="@android:color/transparent"
             android:src="@drawable/ic_back" />
 
-        <ImageButton
-            android:id="@+id/ib_label_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:background="@android:color/black"
-            android:src="@drawable/ic_label_white" />
     </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.textfield.TextInputEditText
@@ -48,8 +38,9 @@
         android:background="@android:color/transparent"
         android:hint="Title"
         android:inputType="textCapSentences"
-        android:maxLines="1"
         android:maxLength="32"
+        android:maxLines="1"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,6 +57,7 @@
         android:background="@android:color/transparent"
         android:hint="Note"
         android:inputType="textMultiLine"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

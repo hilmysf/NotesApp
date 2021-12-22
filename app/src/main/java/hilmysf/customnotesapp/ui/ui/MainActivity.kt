@@ -3,6 +3,7 @@ package hilmysf.customnotesapp.ui.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import hilmysf.customnotesapp.R
@@ -10,6 +11,7 @@ import hilmysf.customnotesapp.databinding.ActivityMainBinding
 import hilmysf.customnotesapp.ui.ui.add.AddActivity
 import hilmysf.customnotesapp.ui.ui.home.HomeFragment
 import hilmysf.customnotesapp.ui.ui.label.LabelFragment
+import hilmysf.customnotesapp.ui.ui.setting.SettingActivity
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -21,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         activityMainBinding.bottomNavigationView.background = null
         activityMainBinding.bottomNavigationView.menu.getItem(1).isEnabled = false
+        activityMainBinding.bottomNavigationView.menu.getItem(2).isEnabled = false
+        activityMainBinding.bottomNavigationView.menu.getItem(4).isChecked = true
+        setBottomNavIcon(true)
 
         val homeFragment = HomeFragment()
         val labelFragment = LabelFragment()
@@ -31,10 +36,35 @@ class MainActivity : AppCompatActivity() {
         }
         activityMainBinding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.btn_home -> setCurrentFragment(homeFragment)
-                R.id.btn_label -> setCurrentFragment(labelFragment)
+                R.id.btn_home -> {
+                    setCurrentFragment(homeFragment)
+                    setBottomNavIcon(true)
+                }
+                R.id.btn_label -> {
+                    setCurrentFragment(labelFragment)
+                    setBottomNavIcon(false)
+                }
+                R.id.btn_settings -> {
+                    startActivity(Intent(applicationContext, SettingActivity::class.java))
+                }
             }
             true
+        }
+    }
+
+    private fun setBottomNavIcon(isHome: Boolean) {
+        if (isHome) {
+            activityMainBinding.bottomNavigationView.menu.getItem(3).icon =
+                ContextCompat.getDrawable(this, R.drawable.ic_home_fill)
+
+            activityMainBinding.bottomNavigationView.menu.getItem(4).icon =
+                ContextCompat.getDrawable(this, R.drawable.ic_label_white)
+
+        } else {
+            activityMainBinding.bottomNavigationView.menu.getItem(4).icon =
+                ContextCompat.getDrawable(this, R.drawable.ic_labelled)
+            activityMainBinding.bottomNavigationView.menu.getItem(3).icon =
+                ContextCompat.getDrawable(this, R.drawable.ic_home)
         }
 
     }

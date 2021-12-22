@@ -1,6 +1,7 @@
 package hilmysf.customnotesapp.ui.data.repositories
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import hilmysf.customnotesapp.ui.data.source.LocalDataSource
@@ -13,6 +14,7 @@ class NoteRepository @Inject constructor(
     private val localDataSource: LocalDataSource
 ) : NoteDataSource {
     private val executorService: ExecutorService = Executors.newSingleThreadExecutor()
+
     override fun getAllNotes(): LiveData<PagedList<NoteEntity>> {
         val config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
@@ -24,8 +26,14 @@ class NoteRepository @Inject constructor(
 
     override fun getNoteById(noteId: Int?): NoteEntity? = localDataSource.getNoteById(noteId)
 
-    override fun getLabelledNotes(isLabelled: Boolean): NoteEntity? =
-        localDataSource.getLabelledNotes(isLabelled)
+    override fun getLabeledNotes(isLabelled: Boolean): LiveData<PagedList<NoteEntity>> {
+        val config = PagedList.Config.Builder()
+            .setEnablePlaceholders(false)
+            .setInitialLoadSizeHint(5)
+            .setPageSize(5)
+            .build()
+        return LivePagedListBuilder(localDataSource.getLabeledNotes(isLabelled), config).build()
+    }
 
     override suspend fun insertNote(note: NoteEntity?) = localDataSource.insertNote(note)
 
@@ -33,4 +41,14 @@ class NoteRepository @Inject constructor(
 
     override suspend fun deleteNote(note: NoteEntity?) = localDataSource.deleteNote(note)
 
+    override fun searchDatabase(searchQuery: String): LiveData<PagedList<NoteEntity>> {
+        val config = PagedList.Config.Builder()
+            .setEnablePlaceholders(false)
+            .setInitialLoadSizeHint(5)
+            .setPageSize(5)
+            .build()
+        return LivePagedListBuilder(localDataSource.searchDatabase(searchQuery), config).build()
+    }
+
+//    override suspend fun insertLabeledNote(note: NoteEntity?) = localDataSource.insertLabeledNote(note)
 }

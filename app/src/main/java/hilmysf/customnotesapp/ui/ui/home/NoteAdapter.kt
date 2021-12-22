@@ -4,9 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import hilmysf.customnotesapp.R
 import hilmysf.customnotesapp.databinding.ItemNoteBinding
 import hilmysf.customnotesapp.ui.data.source.entities.NoteEntity
 import hilmysf.customnotesapp.ui.ui.add.AddActivity
@@ -31,14 +33,14 @@ class NoteAdapter(private val activity: Activity) :
             with(binding) {
                 itemTitle.text = note.title
                 itemContent.text = note.content
-                itemView.setOnClickListener {
+                constraint.setBackgroundColor(note.color)
 
+                itemView.setOnClickListener {
                     val intent = Intent(itemView.context, AddActivity::class.java).apply {
                         putExtra(AddActivity.EXTRA_NOTE, note)
                         putExtra(AddActivity.EXTRA_POSITION, adapterPosition)
                     }
                     activity.startActivityForResult(intent, AddActivity.REQUEST_UPDATE)
-
                 }
             }
         }

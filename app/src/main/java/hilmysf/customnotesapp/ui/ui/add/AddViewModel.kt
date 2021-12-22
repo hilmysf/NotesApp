@@ -14,11 +14,11 @@ class AddViewModel @ViewModelInject constructor(private val noteRepository: Note
         noteRepository.insertNote(note)
     }
 
-    fun updateNote(note: NoteEntity) = viewModelScope.launch(Dispatchers.IO) {
+    fun updateNote(note: NoteEntity?) = viewModelScope.launch(Dispatchers.IO) {
         noteRepository.updateNote(note)
     }
 
-    fun deleteNote(note: NoteEntity) = viewModelScope.launch(Dispatchers.IO) {
+    fun deleteNote(note: NoteEntity?) = viewModelScope.launch(Dispatchers.IO) {
         noteRepository.deleteNote(note)
     }
 }

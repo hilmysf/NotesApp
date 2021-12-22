@@ -9,7 +9,7 @@ interface NoteDataSource {
 
     fun getNoteById(noteId: Int?): NoteEntity?
 
-    fun getLabelledNotes(isLabelled: Boolean): NoteEntity?
+    fun getLabeledNotes(isLabelled: Boolean): LiveData<PagedList<NoteEntity>>
 
     suspend fun insertNote(note: NoteEntity?)
 
@@ -17,4 +17,7 @@ interface NoteDataSource {
 
     suspend fun deleteNote(note: NoteEntity?)
 
+    fun searchDatabase(searchQuery: String): LiveData<PagedList<NoteEntity>>
+
+//    suspend fun insertLabeledNote(note: NoteEntity?)
 }

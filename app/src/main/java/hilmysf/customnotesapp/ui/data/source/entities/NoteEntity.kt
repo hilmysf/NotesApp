@@ -23,5 +23,9 @@ data class NoteEntity(
     var date: String? = null,
 
     @ColumnInfo(name = "label")
-    var label: Boolean = false
+    var label: Boolean = false,
+
+    @ColumnInfo(name = "color")
+    var color: Int = 0,
+
 ): Parcelable

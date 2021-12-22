@@ -12,4 +12,10 @@
     <color name="primary">#2083CC</color>
     <color name="colorPrimaryVariant">#1D73B8</color>
     <color name="colorSecondary">#FAA823</color>
+    <color name="ThemeOne">#cefea3</color>
+    <color name="ThemeTwo">#C51162</color>
+    <color name="ThemeThree">#f1bc2b</color>
+    <color name="ThemeFour">#ed9695</color>
+    <color name="ThemeFive">#b1d0fb</color>
+    <color name="ThemeSix">#d9b5fc</color>
 </resources>

@@ -13,15 +13,21 @@ interface NoteDao {
     @Query("SELECT * FROM noteentity WHERE noteId = :noteId")
     fun getNoteById(noteId: Int?): NoteEntity?
 
-    @Query("SELECT * FROM noteentity WHERE label = :isLabelled")
-    fun getLabelledNotes(isLabelled: Boolean): NoteEntity?
+    @Query("SELECT * FROM noteentity WHERE label = :isLabeled")
+    fun getLabeledNotes(isLabeled: Boolean): DataSource.Factory<Int, NoteEntity>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertNote(note: NoteEntity?)
+    fun insertNote(note: NoteEntity?)
 
     @Update
-    suspend fun updateNote(note: NoteEntity?)
+    fun updateNote(note: NoteEntity?)
 
     @Delete
-    suspend fun deleteNote(note: NoteEntity?)
+    fun deleteNote(note: NoteEntity?)
+
+    @Query("SELECT * FROM noteentity WHERE title LIKE :searchQuery OR content LIKE :searchQuery")
+    fun searchDatabase(searchQuery: String): DataSource.Factory<Int, NoteEntity>
+
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    fun insertLabeledNote(note: NoteEntity?)
 }
