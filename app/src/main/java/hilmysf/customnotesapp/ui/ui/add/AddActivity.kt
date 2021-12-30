@@ -3,16 +3,12 @@ package hilmysf.customnotesapp.ui.ui.add
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.CountDownTimer
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
-import androidx.core.widget.addTextChangedListener
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import hilmysf.customnotesapp.R
@@ -27,13 +23,7 @@ class AddActivity : AppCompatActivity() {
     companion object {
         var EXTRA_NOTE = "extra_note"
         val EXTRA_POSITION = "extra_position"
-//        const val REQUEST_ADD = 100
-//        const val RESULT_ADD = 101
         const val REQUEST_UPDATE = 200
-//        const val RESULT_UPDATE = 201
-//        const val RESULT_DELETE = 301
-//        const val ALERT_DIALOG_CLOSE = 10
-//        const val ALERT_DIALOG_DELETE = 20
     }
 
     private lateinit var activityAddBinding: ActivityAddBinding
@@ -51,6 +41,7 @@ class AddActivity : AppCompatActivity() {
         supportActionBar?.title = null
         supportActionBar?.elevation = 0f
 
+        activityAddBinding.tvTimestamp.text = "Edited ${DateHelper.getCurrentDate()}"
         val intentParcelable = intent.getParcelableExtra<NoteEntity>(EXTRA_NOTE)
         if (intentParcelable != null) {
             activityAddBinding.edtTitle.setText(intentParcelable.title.toString())
@@ -59,69 +50,22 @@ class AddActivity : AppCompatActivity() {
             note.label = intentParcelable.label
             note.color = intentParcelable.color
         }
-//        onTextChange(intentParcelable)
-        onClick(intentParcelable)
+        onClick()
         showBottomSheetDialog(intentParcelable)
     }
+
     override fun onStop() {
         super.onStop()
         val intentParcelable = intent.getParcelableExtra<NoteEntity>(EXTRA_NOTE)
         insertUpdateNote(intentParcelable)
         Log.i("event", "onStop")
     }
-    private fun onClick(intentParcelable: NoteEntity?) {
+
+    private fun onClick() {
         activityAddBinding.ibBackBtn.setOnClickListener {
-//            val intent = Intent(this@AddActivity, MainActivity::class.java).apply {
-//                putExtra(EXTRA_NOTE, note)
-//                putExtra(EXTRA_POSITION, position)
-//            }
-//            startActivity(intent)
-//            insertUpdateNote(intentParcelable)
             finish()
         }
     }
-
-
-//    private fun onTextChange(intentParcelable: NoteEntity?) {
-//        activityAddBinding.edtTitle.addTextChangedListener(object : TextWatcher {
-//            var timer: CountDownTimer? = null
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//            }
-//
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//            }
-//
-//            override fun afterTextChanged(s: Editable?) {
-//                timer?.cancel()
-//                timer = object : CountDownTimer(1000, 1500) {
-//                    override fun onTick(millisUntilFinished: Long) {}
-//                    override fun onFinish() {
-//                        insertUpdateNote(intentParcelable)
-//                    }
-//                }.start()
-//            }
-//
-//        })
-//        activityAddBinding.edtContent.addTextChangedListener(object : TextWatcher {
-//            var timer: CountDownTimer? = null
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//            }
-//
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//            }
-//
-//            override fun afterTextChanged(s: Editable?) {
-//                timer?.cancel()
-//                timer = object : CountDownTimer(1000, 1500) {
-//                    override fun onTick(millisUntilFinished: Long) {}
-//                    override fun onFinish() {
-//                        insertUpdateNote(intentParcelable)
-//                    }
-//                }.start()
-//            }
-//
-//        })
-//    }
 
     private fun insertUpdateNote(intentParcelable: NoteEntity?) {
         val title = activityAddBinding.edtTitle.text.toString()

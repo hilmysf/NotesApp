@@ -47,16 +47,6 @@ class NoteAdapter(private val activity: Activity) :
 
     }
 
-//    private val noteList = ArrayList<NoteEntity>()
-
-//    fun setNotesList(noteList: List<NoteEntity>) {
-//        val diffCallback = NoteDiffCallback(this.noteList, noteList)
-//        val diffResult = DiffUtil.calculateDiff(diffCallback)
-//        this.noteList.clear()
-//        this.noteList.addAll(noteList)
-//        diffResult.dispatchUpdatesTo(this)
-//    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val binding = ItemNoteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return NoteViewHolder(binding)

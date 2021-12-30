@@ -24,7 +24,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_back" />
+            android:src="@drawable/ic_back"
+            app:tint="@color/black" />
 
     </androidx.appcompat.widget.Toolbar>
 

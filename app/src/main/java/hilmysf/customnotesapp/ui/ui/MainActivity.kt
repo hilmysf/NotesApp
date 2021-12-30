@@ -59,7 +59,6 @@ class MainActivity : AppCompatActivity() {
 
             activityMainBinding.bottomNavigationView.menu.getItem(4).icon =
                 ContextCompat.getDrawable(this, R.drawable.ic_label_white)
-
         } else {
             activityMainBinding.bottomNavigationView.menu.getItem(4).icon =
                 ContextCompat.getDrawable(this, R.drawable.ic_labelled)

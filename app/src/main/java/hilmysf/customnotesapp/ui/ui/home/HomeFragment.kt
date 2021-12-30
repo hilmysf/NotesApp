@@ -1,15 +1,20 @@
 package hilmysf.customnotesapp.ui.ui.home
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import hilmysf.customnotesapp.R
 import hilmysf.customnotesapp.databinding.FragmentHomeBinding
 
 @AndroidEntryPoint
@@ -17,6 +22,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var fragmentHomeBinding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var noteAdapter: NoteAdapter
+    var isList = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,15 +35,29 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         super.onViewCreated(view, savedInstanceState)
         searchViewConfiguration(fragmentHomeBinding)
         noteAdapter = NoteAdapter(requireActivity())
+        fragmentHomeBinding.ibChangeView.setOnClickListener {
+            isList = !isList
+            changeLayoutView(isList, context)
+            getNotesData()
+        }
         getNotesData()
+    }
+
+    private fun changeLayoutView(isList: Boolean, context: Context?) {
+        fragmentHomeBinding.ibChangeView.setImageDrawable(
+            context?.let {
+                ContextCompat.getDrawable(
+                    it,
+                    if (isList) R.drawable.list_view else R.drawable.grid_view
+                )
+            }
+        )
     }
 
     private fun searchViewConfiguration(fragmentHomeBinding: FragmentHomeBinding) {
         val searchView = fragmentHomeBinding.searchView
-        searchView.isSubmitButtonEnabled = true
         searchView.setOnQueryTextListener(this);
         searchView.isSubmitButtonEnabled = false
-        searchView.background
     }
 
     private fun getNotesData() {
@@ -45,7 +65,12 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             noteAdapter.submitList(it)
         })
         with(fragmentHomeBinding.rvNotes) {
-            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            layoutManager =
+                if (isList) LinearLayoutManager(context) else StaggeredGridLayoutManager(
+                    2,
+                    StaggeredGridLayoutManager.VERTICAL
+                )
+            Log.i("isList", "$isList")
             setHasFixedSize(true)
             adapter?.stateRestorationPolicy =
                 RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
