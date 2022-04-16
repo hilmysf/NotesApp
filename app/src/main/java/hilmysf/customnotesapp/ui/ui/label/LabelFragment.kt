@@ -37,7 +37,7 @@ class LabelFragment : Fragment(), SearchView.OnQueryTextListener {
         val searchView = fragmentLabelBinding.searchView
 //        if(searchView.isActivated) searchView.canc
         searchView.isIconifiedByDefault = false
-        searchView.setOnQueryTextListener(this);
+        searchView.setOnQueryTextListener(this)
         searchView.isSubmitButtonEnabled = false
 
         searchView.background

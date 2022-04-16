@@ -1,0 +1,14 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        app:icon="@drawable/ic_dark_mode"
+        app:key="dark_mode"
+        app:title="@string/dark_mode_title"/>
+
+    <CheckBoxPreference
+        app:icon="@drawable/ic_language"
+        app:key="language"
+        app:title="@string/language" />
+
+</PreferenceScreen>

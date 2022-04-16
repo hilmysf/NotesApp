@@ -11,10 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CustomNotesApp">
         <activity
-            android:name="hilmysf.customnotesapp.ui.ui.setting.SettingActivity"
+            android:name=".ui.ui.SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".ui.ui.setting.SettingActivity"
             android:exported="false" />
         <activity android:name=".ui.ui.add.AddActivity" />
-        <activity android:name=".ui.ui.MainActivity" android:windowSoftInputMode="adjustPan">
+        <activity
+            android:name=".ui.ui.MainActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

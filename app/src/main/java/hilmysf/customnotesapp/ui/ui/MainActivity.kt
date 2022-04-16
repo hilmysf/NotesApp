@@ -11,7 +11,6 @@ import hilmysf.customnotesapp.databinding.ActivityMainBinding
 import hilmysf.customnotesapp.ui.ui.add.AddActivity
 import hilmysf.customnotesapp.ui.ui.home.HomeFragment
 import hilmysf.customnotesapp.ui.ui.label.LabelFragment
-import hilmysf.customnotesapp.ui.ui.setting.SettingActivity
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(applicationContext, AddActivity::class.java)
             startActivity(intent)
         }
-        activityMainBinding.bottomNavigationView.setOnNavigationItemSelectedListener {
+        activityMainBinding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.btn_home -> {
                     setCurrentFragment(homeFragment)
@@ -45,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                     setBottomNavIcon(false)
                 }
                 R.id.btn_settings -> {
-                    startActivity(Intent(applicationContext, SettingActivity::class.java))
+                    startActivity(Intent(applicationContext, SettingsActivity::class.java))
                 }
             }
             true

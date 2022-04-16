@@ -13,7 +13,6 @@ import javax.inject.Inject
 class NoteRepository @Inject constructor(
     private val localDataSource: LocalDataSource
 ) : NoteDataSource {
-    private val executorService: ExecutorService = Executors.newSingleThreadExecutor()
 
     override fun getAllNotes(): LiveData<PagedList<NoteEntity>> {
         val config = PagedList.Config.Builder()
@@ -49,6 +48,4 @@ class NoteRepository @Inject constructor(
             .build()
         return LivePagedListBuilder(localDataSource.searchDatabase(searchQuery), config).build()
     }
-
-//    override suspend fun insertLabeledNote(note: NoteEntity?) = localDataSource.insertLabeledNote(note)
 }

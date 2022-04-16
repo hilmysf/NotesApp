@@ -13,7 +13,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import hilmysf.customnotesapp.R
 import hilmysf.customnotesapp.databinding.ActivityAddBinding
-import hilmysf.customnotesapp.databinding.BottomSheetLayoutBinding
 import hilmysf.customnotesapp.ui.data.source.entities.NoteEntity
 import hilmysf.customnotesapp.ui.helper.DateHelper
 import hilmysf.customnotesapp.ui.ui.MainActivity
@@ -22,15 +21,13 @@ import hilmysf.customnotesapp.ui.ui.MainActivity
 class AddActivity : AppCompatActivity() {
     companion object {
         var EXTRA_NOTE = "extra_note"
-        val EXTRA_POSITION = "extra_position"
+        const val EXTRA_POSITION = "extra_position"
         const val REQUEST_UPDATE = 200
     }
 
     private lateinit var activityAddBinding: ActivityAddBinding
-    private lateinit var bottomSheetLayoutBinding: BottomSheetLayoutBinding
     private lateinit var bottomSheetDialog: BottomSheetDialog
     private var note: NoteEntity = NoteEntity()
-    private var position = 0
     private val viewModel: AddViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,6 +61,15 @@ class AddActivity : AppCompatActivity() {
     private fun onClick() {
         activityAddBinding.ibBackBtn.setOnClickListener {
             finish()
+        }
+        activityAddBinding.ibAddNotification.setOnClickListener {
+
+        }
+        activityAddBinding.ibArchive.setOnClickListener {
+
+        }
+        activityAddBinding.ibPin.setOnClickListener {
+
         }
     }
 

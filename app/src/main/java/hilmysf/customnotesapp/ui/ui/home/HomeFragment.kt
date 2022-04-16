@@ -22,7 +22,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     private lateinit var fragmentHomeBinding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var noteAdapter: NoteAdapter
-    var isList = false
+    private var isList = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,7 +56,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private fun searchViewConfiguration(fragmentHomeBinding: FragmentHomeBinding) {
         val searchView = fragmentHomeBinding.searchView
-        searchView.setOnQueryTextListener(this);
+        searchView.setOnQueryTextListener(this)
         searchView.isSubmitButtonEnabled = false
     }
 

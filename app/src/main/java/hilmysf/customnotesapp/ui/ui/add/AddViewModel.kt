@@ -1,14 +1,16 @@
 package hilmysf.customnotesapp.ui.ui.add
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import hilmysf.customnotesapp.ui.data.repositories.NoteRepository
 import hilmysf.customnotesapp.ui.data.source.entities.NoteEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AddViewModel @ViewModelInject constructor(private val noteRepository: NoteRepository) :
+@HiltViewModel
+class AddViewModel @Inject constructor(private val noteRepository: NoteRepository) :
     ViewModel() {
     fun insertNote(note: NoteEntity?) = viewModelScope.launch(Dispatchers.IO) {
         noteRepository.insertNote(note)
