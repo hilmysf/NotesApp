@@ -1,7 +1,7 @@
-package hilmysf.customnotesapp.ui.helper
+package hilmysf.customnotesapp.helper
 
 import androidx.recyclerview.widget.DiffUtil
-import hilmysf.customnotesapp.ui.data.source.entities.NoteEntity
+import hilmysf.customnotesapp.data.source.entities.NoteEntity
 
 class NoteDiffCallback(
     private val mOldNoteList: List<NoteEntity>,

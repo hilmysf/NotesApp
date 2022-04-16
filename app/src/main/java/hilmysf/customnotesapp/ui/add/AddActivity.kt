@@ -1,4 +1,4 @@
-package hilmysf.customnotesapp.ui.ui.add
+package hilmysf.customnotesapp.ui.add
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -13,9 +13,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import hilmysf.customnotesapp.R
 import hilmysf.customnotesapp.databinding.ActivityAddBinding
-import hilmysf.customnotesapp.ui.data.source.entities.NoteEntity
-import hilmysf.customnotesapp.ui.helper.DateHelper
-import hilmysf.customnotesapp.ui.ui.MainActivity
+import hilmysf.customnotesapp.data.source.entities.NoteEntity
+import hilmysf.customnotesapp.helper.DateHelper
+import hilmysf.customnotesapp.ui.MainActivity
 
 @AndroidEntryPoint
 class AddActivity : AppCompatActivity() {

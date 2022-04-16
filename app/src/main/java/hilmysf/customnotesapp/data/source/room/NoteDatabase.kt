@@ -1,8 +1,8 @@
-package hilmysf.customnotesapp.ui.data.source.room
+package hilmysf.customnotesapp.data.source.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import hilmysf.customnotesapp.ui.data.source.entities.NoteEntity
+import hilmysf.customnotesapp.data.source.entities.NoteEntity
 
 @Database(
     entities = [NoteEntity::class],

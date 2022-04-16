@@ -1,4 +1,4 @@
-package hilmysf.customnotesapp.ui.ui
+package hilmysf.customnotesapp.ui
 
 import android.content.SharedPreferences
 import android.os.Bundle

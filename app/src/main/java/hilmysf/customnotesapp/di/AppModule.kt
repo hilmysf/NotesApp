@@ -1,4 +1,4 @@
-package hilmysf.customnotesapp.ui.di
+package hilmysf.customnotesapp.di
 
 import android.content.Context
 import androidx.room.Room
@@ -7,9 +7,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import hilmysf.customnotesapp.ui.data.source.LocalDataSource
-import hilmysf.customnotesapp.ui.data.source.room.NoteDao
-import hilmysf.customnotesapp.ui.data.source.room.NoteDatabase
+import hilmysf.customnotesapp.data.source.LocalDataSource
+import hilmysf.customnotesapp.data.source.room.NoteDao
+import hilmysf.customnotesapp.data.source.room.NoteDatabase
 import javax.inject.Singleton
 
 @Module

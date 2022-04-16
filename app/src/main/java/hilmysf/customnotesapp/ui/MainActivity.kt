@@ -1,4 +1,4 @@
-package hilmysf.customnotesapp.ui.ui
+package hilmysf.customnotesapp.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import hilmysf.customnotesapp.R
 import hilmysf.customnotesapp.databinding.ActivityMainBinding
-import hilmysf.customnotesapp.ui.ui.add.AddActivity
-import hilmysf.customnotesapp.ui.ui.home.HomeFragment
-import hilmysf.customnotesapp.ui.ui.label.LabelFragment
+import hilmysf.customnotesapp.ui.add.AddActivity
+import hilmysf.customnotesapp.ui.home.HomeFragment
+import hilmysf.customnotesapp.ui.label.LabelFragment
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

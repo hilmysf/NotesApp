@@ -1,4 +1,4 @@
-package hilmysf.customnotesapp.ui.ui.label
+package hilmysf.customnotesapp.ui.label
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import hilmysf.customnotesapp.databinding.FragmentLabelBinding
-import hilmysf.customnotesapp.ui.ui.home.NoteAdapter
+import hilmysf.customnotesapp.ui.home.NoteAdapter
 
 @AndroidEntryPoint
 class LabelFragment : Fragment(), SearchView.OnQueryTextListener {

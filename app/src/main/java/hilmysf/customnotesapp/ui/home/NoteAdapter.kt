@@ -1,15 +1,13 @@
-package hilmysf.customnotesapp.ui.ui.home
+package hilmysf.customnotesapp.ui.home
 
 import android.app.Activity
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import hilmysf.customnotesapp.databinding.ItemNoteBinding
-import hilmysf.customnotesapp.ui.data.source.entities.NoteEntity
-import hilmysf.customnotesapp.ui.ui.add.AddActivity
+import hilmysf.customnotesapp.data.source.entities.NoteEntity
 
 class NoteAdapter(private val activity: Activity) :
     PagedListAdapter<NoteEntity, NoteAdapter.NoteViewHolder>(DIFF_CALLBACK) {

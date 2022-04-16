@@ -1,4 +1,4 @@
-package hilmysf.customnotesapp.ui.helper
+package hilmysf.customnotesapp.helper
 
 import java.text.SimpleDateFormat
 import java.util.*

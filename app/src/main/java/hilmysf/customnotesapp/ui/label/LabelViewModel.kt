@@ -1,11 +1,11 @@
-package hilmysf.customnotesapp.ui.ui.label
+package hilmysf.customnotesapp.ui.label
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
 import dagger.hilt.android.lifecycle.HiltViewModel
-import hilmysf.customnotesapp.ui.data.repositories.NoteRepository
-import hilmysf.customnotesapp.ui.data.source.entities.NoteEntity
+import hilmysf.customnotesapp.data.repositories.NoteRepository
+import hilmysf.customnotesapp.data.source.entities.NoteEntity
 import javax.inject.Inject
 
 @HiltViewModel

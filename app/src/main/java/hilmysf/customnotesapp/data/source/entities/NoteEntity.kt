@@ -1,4 +1,4 @@
-package hilmysf.customnotesapp.ui.data.source.entities
+package hilmysf.customnotesapp.data.source.entities
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

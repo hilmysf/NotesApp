@@ -1,8 +1,8 @@
-package hilmysf.customnotesapp.ui.data.source.room
+package hilmysf.customnotesapp.data.source.room
 
 import androidx.paging.DataSource
 import androidx.room.*
-import hilmysf.customnotesapp.ui.data.source.entities.NoteEntity
+import hilmysf.customnotesapp.data.source.entities.NoteEntity
 
 @Dao
 interface NoteDao {

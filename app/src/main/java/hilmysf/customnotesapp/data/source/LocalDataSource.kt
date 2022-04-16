@@ -1,8 +1,8 @@
-package hilmysf.customnotesapp.ui.data.source
+package hilmysf.customnotesapp.data.source
 
 import androidx.paging.DataSource
-import hilmysf.customnotesapp.ui.data.source.entities.NoteEntity
-import hilmysf.customnotesapp.ui.data.source.room.NoteDao
+import hilmysf.customnotesapp.data.source.entities.NoteEntity
+import hilmysf.customnotesapp.data.source.room.NoteDao
 import javax.inject.Inject
 
 class LocalDataSource @Inject constructor(private val mNoteDao: NoteDao) {

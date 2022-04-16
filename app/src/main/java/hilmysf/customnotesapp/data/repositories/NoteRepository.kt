@@ -1,13 +1,10 @@
-package hilmysf.customnotesapp.ui.data.repositories
+package hilmysf.customnotesapp.data.repositories
 
 import androidx.lifecycle.LiveData
-import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import hilmysf.customnotesapp.ui.data.source.LocalDataSource
-import hilmysf.customnotesapp.ui.data.source.entities.NoteEntity
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
+import hilmysf.customnotesapp.data.source.LocalDataSource
+import hilmysf.customnotesapp.data.source.entities.NoteEntity
 import javax.inject.Inject
 
 class NoteRepository @Inject constructor(

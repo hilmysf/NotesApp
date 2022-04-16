@@ -1,4 +1,4 @@
-package hilmysf.customnotesapp.ui.di
+package hilmysf.customnotesapp.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

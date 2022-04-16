@@ -1,8 +1,8 @@
-package hilmysf.customnotesapp.ui.data.repositories
+package hilmysf.customnotesapp.data.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
-import hilmysf.customnotesapp.ui.data.source.entities.NoteEntity
+import hilmysf.customnotesapp.data.source.entities.NoteEntity
 
 interface NoteDataSource {
     fun getAllNotes(): LiveData<PagedList<NoteEntity>>
