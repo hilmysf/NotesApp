@@ -7,7 +7,7 @@ Submission for #JuaraAndroid 2022
 - Clean Architecture
 - Kotlin Coroutines
 - Room Database
-- Hilt Dependency Injection
+- Dagger Hilt Dependency Injection
 
 # How to install
 1. Clone this project to your android studio
